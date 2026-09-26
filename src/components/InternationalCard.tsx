@@ -56,6 +56,8 @@ export default function InternationalCard({ f }: { f: IntlFramework }) {
         )}
         <dt className="text-slate-500 dark:text-slate-400">Applies to</dt>
         <dd className="text-slate-800 dark:text-slate-200">{f.appliesTo}</dd>
+        <dt className="text-slate-500 dark:text-slate-400">Enforced by</dt>
+        <dd className="text-slate-800 dark:text-slate-200">{f.enforcedBy}</dd>
       </dl>
 
       <p className="mt-3 text-[0.95rem] leading-relaxed text-slate-700 dark:text-slate-300">{f.summary}</p>

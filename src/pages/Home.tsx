@@ -100,7 +100,7 @@ export default function Home() {
             </h2>
             <p className="mt-2 max-w-3xl text-slate-700 dark:text-slate-300">
               Compare Indian rules with {INTERNATIONAL.length} international laws, frameworks and standards, including
-              GDPR, DORA, NIS2, the NIST CSF, ISO/IEC 27001 and PCI DSS, with filters for{' '}
+              GDPR, DORA, NIS2, the NIST CSF, APRA CPS 234, the MAS TRM Guidelines, ISO/IEC 27001 and MITRE ATT&amp;CK, with filters for{' '}
               {INTL_REGIONS.map((r) => r.label).join(', ').replace(/, ([^,]*)$/, ' and $1')}.
             </p>
             <Link

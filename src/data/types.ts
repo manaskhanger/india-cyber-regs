@@ -39,7 +39,7 @@ export type Direction = {
 
 // ---------------------------------------------------------------- International frameworks
 
-export type IntlRegionId = 'eu' | 'uk' | 'us' | 'global'
+export type IntlRegionId = 'eu' | 'uk' | 'us' | 'apac' | 'global'
 
 export type IntlRegion = {
   id: IntlRegionId
@@ -81,6 +81,13 @@ export type IntlFramework = {
   /** Date(s) it applies from, where relevant and verified */
   appliesFrom?: string
   appliesTo: string
+  /** Very short scope for the "Applies to" column of the "At a glance" table */
+  scope: string
+  /**
+   * Supervisor, regulator or enforcing body, as verified in the official text; or
+   * "Voluntary / no enforcing body" for voluntary frameworks; or the certifying scheme where relevant
+   */
+  enforcedBy: string
   /** Hand-written, plain-language 1–2 sentence summary */
   summary: string
   /** Optional status note (superseded, amended, etc.), only when verified */

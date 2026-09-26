@@ -40,7 +40,7 @@ export default function International() {
         <h1 className="font-serif text-3xl font-semibold tracking-tight sm:text-4xl">International frameworks</h1>
         <p className="mt-3 text-slate-600 dark:text-slate-300">
           Key cybersecurity and data-protection laws, regulations, supervisory frameworks and standards from the EU, the
-          UK, the US and global bodies that often come up alongside Indian rules in GRC work and interviews. Names,
+          UK, the US, the Asia-Pacific region and global bodies that often come up alongside Indian rules in GRC work and interviews. Names,
           versions and dates were checked against the issuing body’s own website on {LAST_VERIFIED}; details that could
           not be confirmed are left out.
         </p>
@@ -81,19 +81,30 @@ export default function International() {
         <h2 id="glance-heading" className="font-serif text-xl font-semibold">
           At a glance
         </h2>
-        <div className="mt-3 overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
-          <table className="w-full min-w-[36rem] text-left text-sm">
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+          “Enforced by” names the supervisor or regulator given in the official text, or says when a framework is
+          voluntary. On small screens, scroll the table sideways.
+        </p>
+        <div
+          className="mt-3 max-w-full overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800"
+          role="region"
+          aria-labelledby="glance-heading"
+          tabIndex={0}
+        >
+          <table className="w-full min-w-[60rem] text-left text-sm">
             <thead className="bg-slate-50 text-slate-600 dark:bg-slate-900 dark:text-slate-400">
               <tr>
                 <th scope="col" className="px-3 py-2 font-medium">Name</th>
                 <th scope="col" className="px-3 py-2 font-medium">Region</th>
                 <th scope="col" className="px-3 py-2 font-medium">Type</th>
                 <th scope="col" className="px-3 py-2 font-medium">Version / date</th>
+                <th scope="col" className="px-3 py-2 font-medium">Applies to</th>
+                <th scope="col" className="px-3 py-2 font-medium">Enforced by</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {items.map((f) => (
-                <tr key={f.id} className="text-slate-800 dark:text-slate-200">
+                <tr key={f.id} className="align-top text-slate-800 dark:text-slate-200">
                   <th scope="row" className="px-3 py-2 font-medium">
                     <a href={`#${f.id}`} className="text-teal-800 underline-offset-2 hover:underline dark:text-teal-300">
                       {f.shortName}
@@ -102,6 +113,8 @@ export default function International() {
                   <td className="px-3 py-2">{regionLabel[f.region]}</td>
                   <td className="px-3 py-2">{f.type}</td>
                   <td className="px-3 py-2">{f.glance}</td>
+                  <td className="min-w-[12rem] px-3 py-2">{f.scope}</td>
+                  <td className="min-w-[14rem] px-3 py-2">{f.enforcedBy}</td>
                 </tr>
               ))}
             </tbody>

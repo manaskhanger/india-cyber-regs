@@ -26,6 +26,12 @@ const TIBER_PAGE = 'https://www.ecb.europa.eu/paym/cyber-resilience/tiber-eu/htm
 const CBEST =
   'https://www.bankofengland.co.uk/financial-stability/operational-resilience-of-the-financial-sector/cbest-threat-intelligence-led-assessments-implementation-guide'
 
+const MAS_TRM =
+  'https://www.mas.gov.sg/-/media/mas/regulations-and-financial-stability/regulatory-and-supervisory-framework/risk-management/trm-guidelines-18-january-2021.pdf'
+const APRA_CPS234 = 'https://www.apra.gov.au/sites/default/files/cps_234_july_2019_for_public_release.pdf'
+const HKMA_CFI2 = 'https://brdr.hkma.gov.hk/eng/doc-ldg/docId/getPdf/20201103-1-EN/20201103-1-EN.pdf'
+const HKMA_CFI2_ANNEX = 'https://brdr.hkma.gov.hk/eng/doc-ldg/docId/getPdf/20201103-2-EN/20201103-2-EN.pdf'
+
 const IRDAI_NOTE =
   'Figure taken from the 2023 Guidelines. IRDAI revised them by the Information and Cyber Security Guidelines, 2026 (6 April 2026), but the full 2026 text (Annexure B) was not available on irdai.gov.in to verify, so check the 2026 version before relying on this.'
 const DPDP_NOTE =
@@ -50,6 +56,9 @@ const card = {
   cbest: { to: '/international?region=uk#uk-cbest', label: 'CBEST card' },
   nydfs: { to: '/international?region=us#us-nydfs-500', label: 'NYDFS Part 500 card' },
   sec: { to: '/international?region=us#us-sec-cyber-2023', label: 'SEC cyber disclosure card' },
+  mas: { to: '/international?region=apac#apac-mas-trm', label: 'MAS TRM Guidelines card' },
+  apra: { to: '/international?region=apac#apac-apra-cps234', label: 'APRA CPS 234 card' },
+  hkma: { to: '/international?region=apac#apac-hkma-craf', label: 'HKMA C-RAF 2.0 / iCAST card' },
 }
 
 export const COMPARE_TOPICS: CompareTopic[] = [
@@ -341,6 +350,25 @@ export const COMPARE: Record<CompareTopicId, CompareRow[]> = {
       ],
       card: card.sec,
     },
+    {
+      id: 'inc-apra',
+      scope: 'international',
+      instrument: 'APRA Prudential Standard CPS 234 Information Security (July 2019)',
+      jurisdiction: 'Australia',
+      points: [
+        {
+          text: 'Notify APRA as soon as possible and no later than 72 hours after becoming aware of an information security incident that materially affected, or could have materially affected, the entity or its customers, or that has been notified to other regulators.',
+          clause: 'Para 35',
+        },
+        {
+          text: 'Notify APRA as soon as possible and no later than 10 business days after becoming aware of a material information security control weakness the entity expects it cannot remediate in a timely manner.',
+          clause: 'Para 36',
+        },
+      ],
+      appliesTo: 'All APRA-regulated entities (ADIs, general insurers, life companies, private health insurers, RSE licensees)',
+      sources: [{ label: 'CPS 234 PDF, p. 8 (paras 35–36)', url: `${APRA_CPS234}#page=8` }],
+      card: card.apra,
+    },
   ],
 
   // ------------------------------------------------------------------ 2. Log retention
@@ -571,6 +599,44 @@ export const COMPARE: Record<CompareTopicId, CompareRow[]> = {
       sources: [{ label: 'DFS Part 500 page (§§ 500.2, 500.17)', url: NYDFS }],
       card: card.nydfs,
     },
+    {
+      id: 'aud-mas-trm',
+      scope: 'international',
+      instrument: 'MAS Technology Risk Management Guidelines (January 2021)',
+      jurisdiction: 'Singapore',
+      points: [
+        {
+          text: 'IT audit should give the board and senior management an independent and objective opinion on the adequacy and effectiveness of risk management, governance and internal controls for technology risk.',
+          clause: 'Para 15.1.1',
+        },
+        {
+          text: 'The frequency of IT audits should be commensurate with the criticality of, and risk posed by, the IT asset, function or process; IT auditors need the requisite competency and skills.',
+          clause: 'Paras 15.1.3–15.1.4',
+        },
+      ],
+      appliesTo: 'Financial institutions regulated by MAS (guidelines; MAS considers observance in supervision, para 2.2)',
+      sources: [{ label: 'MAS TRM Guidelines PDF, p. 53 (section 15.1)', url: `${MAS_TRM}#page=53` }],
+      card: card.mas,
+    },
+    {
+      id: 'aud-apra',
+      scope: 'international',
+      instrument: 'APRA Prudential Standard CPS 234 Information Security (July 2019)',
+      jurisdiction: 'Australia',
+      points: [
+        {
+          text: 'Internal audit must review the design and operating effectiveness of information security controls, including those maintained by related parties and third parties. No frequency is set.',
+          clause: 'Para 32',
+        },
+        {
+          text: 'Control assurance must be provided by appropriately skilled personnel; internal audit must assess a related or third party’s assurance where an incident could materially affect the entity and internal audit intends to rely on it.',
+          clause: 'Paras 33–34',
+        },
+      ],
+      appliesTo: 'All APRA-regulated entities',
+      sources: [{ label: 'CPS 234 PDF, pp. 7–8 (paras 32–34)', url: `${APRA_CPS234}#page=7` }],
+      card: card.apra,
+    },
   ],
 
   // ------------------------------------------------------------------ 4. Red-team, TLPT and penetration testing
@@ -790,6 +856,78 @@ export const COMPARE: Record<CompareTopicId, CompareRow[]> = {
       note: NYDFS_NOTE,
       sources: [{ label: 'DFS Part 500 page (§ 500.5)', url: NYDFS }],
       card: card.nydfs,
+    },
+    {
+      id: 'tst-mas-trm',
+      scope: 'international',
+      instrument: 'MAS Technology Risk Management Guidelines (January 2021)',
+      jurisdiction: 'Singapore',
+      points: [
+        {
+          text: 'Penetration testing of systems directly accessible from the Internet at least once a year, or whenever they undergo major changes or updates; otherwise PT frequency depends on system criticality and exposure to cyber risk.',
+          clause: 'Para 13.2.4',
+        },
+        {
+          text: 'Regular vulnerability assessment, at a frequency commensurate with the system’s criticality and security risk.',
+          clause: 'Para 13.1.1',
+        },
+        {
+          text: 'Perform an adversarial attack simulation (red team) exercise to test the cyber defence and response plan. No frequency is set.',
+          clause: 'Para 13.4.1',
+        },
+      ],
+      appliesTo: 'Financial institutions regulated by MAS (guidelines; MAS considers observance in supervision, para 2.2)',
+      sources: [
+        { label: 'MAS TRM Guidelines PDF, p. 45 (13.1–13.2)', url: `${MAS_TRM}#page=45` },
+        { label: 'p. 47 (13.4)', url: `${MAS_TRM}#page=47` },
+      ],
+      card: card.mas,
+    },
+    {
+      id: 'tst-apra',
+      scope: 'international',
+      instrument: 'APRA Prudential Standard CPS 234 Information Security (July 2019)',
+      jurisdiction: 'Australia',
+      points: [
+        {
+          text: 'Review and test information security response plans every year.',
+          clause: 'Para 26',
+        },
+        {
+          text: 'Test control effectiveness through a systematic testing program whose nature and frequency match factors such as how fast threats change and the criticality of the asset.',
+          clause: 'Para 27',
+        },
+        {
+          text: 'Testing must be done by appropriately skilled and functionally independent specialists, and the testing program reviewed at least annually or after a material change.',
+          clause: 'Paras 30–31',
+        },
+      ],
+      appliesTo: 'All APRA-regulated entities',
+      sources: [{ label: 'CPS 234 PDF, p. 7 (paras 26–31)', url: `${APRA_CPS234}#page=7` }],
+      card: card.apra,
+    },
+    {
+      id: 'tst-hkma',
+      scope: 'international',
+      instrument: 'HKMA C-RAF 2.0: iCAST (Cybersecurity Fortification Initiative 2.0)',
+      jurisdiction: 'Hong Kong',
+      points: [
+        {
+          text: 'iCAST applies to Authorized Institutions whose inherent risk is assessed as “medium” or “high”; the circular set deadlines to complete it of end-June 2022 (Group 1), end-March 2023 (Group 2) and end-December 2023 (Group 3).',
+          clause: 'CFI 2.0 circular, 3 Nov 2020, para (ii)',
+        },
+        {
+          text: 'CFI 2.0 added Blue team requirements to iCAST, to measure how well an AI detects, responds and recovers; the Annex lists the CREST certifications and equivalent qualifications accepted for each iCAST role.',
+          clause: 'Annex to the circular',
+        },
+      ],
+      appliesTo: 'Hong Kong Authorized Institutions with medium or high inherent risk',
+      note: 'The public circular does not set a repeat frequency for iCAST. The C-RAF 2.0 document itself is on the HKMA’s non-public Supervisory Communication Website.',
+      sources: [
+        { label: 'HKMA CFI 2.0 circular (PDF)', url: HKMA_CFI2 },
+        { label: 'Annex (PDF)', url: HKMA_CFI2_ANNEX },
+      ],
+      card: card.hkma,
     },
   ],
 }

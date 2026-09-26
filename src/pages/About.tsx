@@ -32,6 +32,15 @@ const INTERNATIONAL_DOMAINS = [
   'opengroup.org',
   'publications.opengroup.org',
   'fairinstitute.org',
+  'mas.gov.sg',
+  'apra.gov.au',
+  'handbook.apra.gov.au',
+  'hkma.gov.hk',
+  'brdr.hkma.gov.hk',
+  'attack.mitre.org',
+  'cisecurity.org',
+  'isaca.org',
+  'aicpa-cima.com',
 ]
 
 function DomainList({ domains }: { domains: string[] }) {
