@@ -12,6 +12,14 @@ A clean, unofficial reference hub of Indian cybersecurity regulatory directions 
 - **Directions** (`/directions`): each direction as a card with its title, issuing body, date, reference number (when verified), who it applies to, one hand-written plain-language summary sentence, and a link to the official source. You can filter by regulator with chip buttons (for example `/directions?regulator=sebi`).
 - **About**: purpose, disclaimer, and sources policy.
 
+## International frameworks (Phase 2)
+
+- **International** (`/international`): 20 international cyber and data-protection laws, regulations, supervisory frameworks and standards, with region filter buttons (All, EU, UK, US, Global; for example `/international?region=eu`) and an "At a glance" table.
+- Each card shows the name and short name, issuer, jurisdiction, type (Law/Regulation, Directive, Supervisory framework, Voluntary framework or Standard), current version or adoption date, the date it applies from where relevant, who it applies to, a short plain-language summary, a status note where useful, and links to the issuer's own site.
+- Covered: GDPR, DORA, NIS2, TIBER-EU, the Cyber Resilience Act and the EU AI Act (EU); CBEST (UK); NIST CSF 2.0, NIST SP 800-53 Rev. 5, the SEC cybersecurity disclosure rules and NYDFS 23 NYCRR Part 500 (US); ISO/IEC 27001:2022, PCI DSS, the Swift CSCF, the BCBS Principles for operational resilience, the CPMI-IOSCO cyber guidance for FMIs, the OWASP Top 10, OWASP ASVS, the OWASP Top 10 for LLM Applications and Open FAIR (Global).
+- Where the overlap is obvious, a card has a "Related on this site" link to an Indian direction (for example GDPR to the DPDP Act and Rules, and DORA and TIBER-EU to the RBI 2026 Directions).
+- Data lives in [`src/data/international.ts`](src/data/international.ts), with types in [`src/data/types.ts`](src/data/types.ts). Each entry keeps the official URLs it was verified against in its `sources` field. Links go to the issuing body's own website (EUR-Lex, central banks, regulators and standard-setters). Paid standards such as ISO/IEC 27001 link only to the publisher's page. Last verified: 26 September 2026.
+
 ## Sources policy
 
 - Every title, issuer, date, reference number and applicability note was checked against an official source: rbi.org.in, sebi.gov.in, cert-in.org.in, irdai.gov.in, meity.gov.in, egazette.gov.in or pfrda.org.in. Fields that couldn't be verified are left out, not guessed.
@@ -30,7 +38,7 @@ This is a personal, non-commercial learning project. It isn't run by, endorsed b
 - [React Router](https://reactrouter.com/) 7
 - [lucide-react](https://lucide.dev/) icons
 - [oxlint](https://oxc.rs/) for linting
-- Hosted on GitHub Pages from the `gh-pages` branch, with base path `/india-cyber-regs/`. The build copies `index.html` to `404.html` so deep links like `/directions` work.
+- Hosted on GitHub Pages from the `gh-pages` branch, with base path `/india-cyber-regs/`. The build copies `index.html` to `404.html` so deep links like `/directions` and `/international` work.
 
 ## Run locally
 

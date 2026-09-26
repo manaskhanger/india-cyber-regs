@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, BookOpen, GraduationCap, ClipboardCheck } from 'lucide-react'
+import { ArrowRight, BookOpen, GraduationCap, ClipboardCheck, Globe2 } from 'lucide-react'
 import { REGULATORS } from '../data/regulators'
 import { DIRECTIONS } from '../data/directions'
+import { INTERNATIONAL, INTL_REGIONS } from '../data/international'
 import { DISCLAIMER } from '../disclaimer'
 
 const countFor = (id: string) => DIRECTIONS.filter((d) => d.regulator === id).length
@@ -84,6 +85,31 @@ export default function Home() {
             )
           })}
         </ul>
+      </section>
+
+      <section
+        aria-labelledby="intl-heading"
+        className="rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900/60"
+      >
+        <div className="flex items-start gap-3">
+          <Globe2 className="mt-1 size-5 shrink-0 text-teal-700 dark:text-teal-400" aria-hidden="true" />
+          <div>
+            <h2 id="intl-heading" className="font-serif text-2xl font-semibold">
+              International frameworks
+            </h2>
+            <p className="mt-2 max-w-3xl text-slate-700 dark:text-slate-300">
+              Compare Indian rules with {INTERNATIONAL.length} international laws, frameworks and standards, including
+              GDPR, DORA, NIS2, the NIST CSF, ISO/IEC 27001 and PCI DSS, with filters for{' '}
+              {INTL_REGIONS.map((r) => r.label).join(', ').replace(/, ([^,]*)$/, ' and $1')}.
+            </p>
+            <Link
+              to="/international"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-teal-700 px-4 py-2 font-medium text-teal-800 hover:bg-teal-50 dark:border-teal-500 dark:text-teal-300 dark:hover:bg-teal-900/30"
+            >
+              Browse {INTERNATIONAL.length} international frameworks <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
       </section>
 
       <section aria-labelledby="who-heading">
