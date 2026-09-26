@@ -92,3 +92,42 @@ export type IntlFramework = {
   /** Official URLs used to verify the fields above */
   sources: string[]
 }
+
+// ---------------------------------------------------------------- Phase 3: comparison tables
+
+export type CompareTopicId = 'incident' | 'logs' | 'audit' | 'testing'
+
+export type CompareTopic = {
+  id: CompareTopicId
+  /** Short label for the tab button */
+  label: string
+  /** Heading shown above the table */
+  title: string
+  /** One-line description of what the table compares */
+  description: string
+}
+
+export type ComparePoint = {
+  /** Plain-language paraphrase of the verified requirement, including the figure */
+  text: string
+  /** Clause, article, paragraph or section number where the figure appears */
+  clause: string
+}
+
+export type CompareRow = {
+  id: string
+  /** Indian or international instrument */
+  scope: 'indian' | 'international'
+  /** Instrument name as shown in the table */
+  instrument: string
+  jurisdiction: string
+  /** One or more verified requirements, each with its clause */
+  points: ComparePoint[]
+  appliesTo: string
+  /** Optional caveat, for example a later revision or a start date */
+  note?: string
+  /** Official outbound links, deep-linked to the article, clause or PDF page where possible */
+  sources: OfficialLink[]
+  /** Link to the matching card on this site */
+  card: { to: string; label: string }
+}

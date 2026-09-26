@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, BookOpen, GraduationCap, ClipboardCheck, Globe2 } from 'lucide-react'
+import { ArrowRight, BookOpen, GraduationCap, ClipboardCheck, Globe2, Scale } from 'lucide-react'
 import { REGULATORS } from '../data/regulators'
 import { DIRECTIONS } from '../data/directions'
 import { INTERNATIONAL, INTL_REGIONS } from '../data/international'
+import { COMPARE, COMPARE_TOPICS } from '../data/compare'
 import { DISCLAIMER } from '../disclaimer'
 
 const countFor = (id: string) => DIRECTIONS.filter((d) => d.regulator === id).length
@@ -107,6 +108,33 @@ export default function Home() {
               className="mt-4 inline-flex items-center gap-2 rounded-lg border border-teal-700 px-4 py-2 font-medium text-teal-800 hover:bg-teal-50 dark:border-teal-500 dark:text-teal-300 dark:hover:bg-teal-900/30"
             >
               Browse {INTERNATIONAL.length} international frameworks <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="compare-heading"
+        className="rounded-xl border border-slate-200 bg-slate-50 p-6 dark:border-slate-800 dark:bg-slate-900/60"
+      >
+        <div className="flex items-start gap-3">
+          <Scale className="mt-1 size-5 shrink-0 text-teal-700 dark:text-teal-400" aria-hidden="true" />
+          <div>
+            <h2 id="compare-heading" className="font-serif text-2xl font-semibold">
+              Compare side by side
+            </h2>
+            <p className="mt-2 max-w-3xl text-slate-700 dark:text-slate-300">
+              Tables that put Indian and international rules next to each other on{' '}
+              {COMPARE_TOPICS.map((t) => t.label.toLowerCase()).join(', ').replace(/, ([^,]*)$/, ' and $1')}, for
+              example CERT-In’s 6-hour reporting window next to GDPR’s 72 hours. Every row cites the clause and links to
+              the official text; only figures verified in that text are shown.
+            </p>
+            <Link
+              to="/compare"
+              className="mt-4 inline-flex items-center gap-2 rounded-lg border border-teal-700 px-4 py-2 font-medium text-teal-800 hover:bg-teal-50 dark:border-teal-500 dark:text-teal-300 dark:hover:bg-teal-900/30"
+            >
+              Open the {Object.values(COMPARE).reduce((n, rows) => n + rows.length, 0)}-row comparison{' '}
+              <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>
         </div>

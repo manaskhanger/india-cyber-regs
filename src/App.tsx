@@ -3,6 +3,7 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import Directions from './pages/Directions'
 import International from './pages/International'
+import Compare from './pages/Compare'
 import About from './pages/About'
 import NotFound from './pages/NotFound'
 
@@ -16,6 +17,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="directions" element={<Directions />} />
           <Route path="international" element={<International />} />
+          <Route path="compare" element={<Compare />} />
           <Route path="about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Route>

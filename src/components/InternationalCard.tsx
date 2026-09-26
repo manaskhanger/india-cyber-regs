@@ -25,7 +25,7 @@ export default function InternationalCard({ f }: { f: IntlFramework }) {
   return (
     <article
       id={f.id}
-      className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="min-w-0 scroll-mt-24 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
       <div className="mb-2 flex flex-wrap items-center gap-2 text-xs">
         <span className="rounded-full bg-teal-50 px-2.5 py-0.5 font-semibold text-teal-800 dark:bg-teal-900/40 dark:text-teal-200">

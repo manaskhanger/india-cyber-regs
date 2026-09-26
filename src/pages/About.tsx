@@ -10,6 +10,43 @@ const OFFICIAL_DOMAINS = [
   'pfrda.org.in',
 ]
 
+// Issuers of the international laws, frameworks and standards on /international and /compare
+const INTERNATIONAL_DOMAINS = [
+  'eur-lex.europa.eu',
+  'ecb.europa.eu',
+  'bankofengland.co.uk',
+  'nist.gov',
+  'csrc.nist.gov',
+  'nvlpubs.nist.gov',
+  'sec.gov',
+  'dfs.ny.gov',
+  'bis.org',
+  'iso.org',
+  'pcisecuritystandards.org',
+  'blog.pcisecuritystandards.org',
+  'swift.com',
+  'owasp.org',
+  'top10.owasp.org',
+  'genai.owasp.org',
+  'github.com/OWASP',
+  'opengroup.org',
+  'publications.opengroup.org',
+  'fairinstitute.org',
+]
+
+function DomainList({ domains }: { domains: string[] }) {
+  return (
+    <>
+      {domains.map((d, i) => (
+        <span key={d}>
+          <code className="rounded bg-slate-100 px-1 py-0.5 text-sm dark:bg-slate-800">{d}</code>
+          {i < domains.length - 1 ? ', ' : '.'}
+        </span>
+      ))}
+    </>
+  )
+}
+
 export default function About() {
   return (
     <article className="max-w-3xl space-y-10">
@@ -37,7 +74,7 @@ export default function About() {
         <ul className="mt-3 list-disc space-y-1.5 pl-5 text-sm">
           <li>This site is not run by, endorsed by, or connected to RBI, SEBI, CERT-In, IRDAI, MeitY, PFRDA, NPCI or any other public body.</li>
           <li>Summaries are simplified paraphrases. They may leave out conditions, exceptions, timelines or later amendments.</li>
-          <li>Nothing here is legal, regulatory or compliance advice. The official text published by the regulator is the only authoritative version.</li>
+          <li>Nothing here is legal, regulatory or compliance advice. The official text published by the regulator or issuing body is the only authoritative version.</li>
           <li>Regulations change. An entry that was accurate on the date it was checked may since have been amended, superseded or repealed.</li>
         </ul>
       </section>
@@ -46,14 +83,15 @@ export default function About() {
         <h2 id="sources" className="font-serif text-2xl font-semibold">Sources policy</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-slate-700 dark:text-slate-300">
           <li>
-            <strong>Official sources only.</strong> Every title, issuing body, date, reference number and applicability note is
-            taken from the regulator’s own website or the Gazette of India. Official domains used include:{' '}
-            {OFFICIAL_DOMAINS.map((d, i) => (
-              <span key={d}>
-                <code className="rounded bg-slate-100 px-1 py-0.5 text-sm dark:bg-slate-800">{d}</code>
-                {i < OFFICIAL_DOMAINS.length - 1 ? ', ' : '.'}
-              </span>
-            ))}
+            <strong>Official sources only.</strong> Every title, issuing body, date, reference number, applicability note and
+            figure is taken from the issuer’s own website. For Indian directions that means the regulator’s website or the
+            Gazette of India: <DomainList domains={OFFICIAL_DOMAINS} />
+          </li>
+          <li>
+            <strong>International issuers.</strong> International laws and supervisory frameworks link to the official
+            publisher (EUR-Lex, central banks and regulators), and standards and frameworks link to the issuing standards
+            body’s own site, such as ISO, PCI SSC, Swift, OWASP, The Open Group and the FAIR Institute. Domains used:{' '}
+            <DomainList domains={INTERNATIONAL_DOMAINS} />
           </li>
           <li>
             <strong>No guessing.</strong> If a field could not be confirmed on an official source, it is left out rather than

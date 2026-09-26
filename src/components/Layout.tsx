@@ -5,10 +5,20 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 
 export default function Layout() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
+    if (!hash) {
+      window.scrollTo(0, 0)
+      return
+    }
+    // Links such as /directions?regulator=certin#certin-70b-2022 jump to that card once it has rendered.
+    const t = window.setTimeout(() => {
+      const el = document.getElementById(decodeURIComponent(hash.slice(1)))
+      if (el) el.scrollIntoView({ block: 'start' })
+      else window.scrollTo(0, 0)
+    }, 0)
+    return () => window.clearTimeout(t)
+  }, [pathname, hash])
 
   return (
     <div className="flex min-h-screen flex-col bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">

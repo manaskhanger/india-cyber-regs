@@ -65,7 +65,7 @@ export default function Directions() {
         {activeReg ? ` from ${activeReg.name}` : ''}.
       </p>
 
-      <div className="mt-4 grid gap-5 lg:grid-cols-2">
+      <div className="mt-4 grid grid-cols-1 gap-5 lg:grid-cols-2">
         {items.map((d) => (
           <DirectionCard key={d.id} d={d} />
         ))}

@@ -18,7 +18,7 @@ export default function DirectionCard({ d }: { d: Direction }) {
   return (
     <article
       id={d.id}
-      className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
+      className="min-w-0 scroll-mt-24 rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-shadow hover:shadow-md dark:border-slate-800 dark:bg-slate-900"
     >
       <div className="mb-2 flex flex-wrap items-center gap-2 text-xs">
         <span className="rounded-full bg-teal-50 px-2.5 py-0.5 font-medium text-teal-800 dark:bg-teal-900/40 dark:text-teal-200">
@@ -31,13 +31,13 @@ export default function DirectionCard({ d }: { d: Direction }) {
 
       <h3 className="font-serif text-lg font-semibold leading-snug text-slate-900 dark:text-slate-50">{d.title}</h3>
 
-      <dl className="mt-3 grid gap-x-4 gap-y-1.5 text-sm sm:grid-cols-[8rem_1fr]">
+      <dl className="mt-3 grid grid-cols-1 gap-x-4 gap-y-1.5 text-sm sm:grid-cols-[8rem_1fr]">
         <dt className="text-slate-500 dark:text-slate-400">Issued by</dt>
         <dd className="text-slate-800 dark:text-slate-200">{d.issuer}</dd>
         {d.refNo && (
           <>
             <dt className="text-slate-500 dark:text-slate-400">Reference no.</dt>
-            <dd className="break-words font-mono text-[0.8rem] text-slate-800 dark:text-slate-200">{d.refNo}</dd>
+            <dd className="min-w-0 font-mono [overflow-wrap:anywhere] text-[0.8rem] text-slate-800 dark:text-slate-200">{d.refNo}</dd>
           </>
         )}
         <dt className="text-slate-500 dark:text-slate-400">Applies to</dt>
